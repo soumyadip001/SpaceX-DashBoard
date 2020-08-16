@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Row } from 'react-bootstrap';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import Header from '../Layout/Header';
 import Sidebar from '../Layout/Sidebar';
@@ -22,6 +23,11 @@ class Dashboard extends Component {
         );
     }
 }
+
+Dashboard.propTypes = {
+    sidebarFilters: PropTypes.array.isRequired,
+    developer: PropTypes.array.isRequired,
+};
 
 const mapStateToProps = state => ({
     developer: state.developer,

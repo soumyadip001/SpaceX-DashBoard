@@ -1,7 +1,9 @@
+import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { createStore, compose, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
+import PropTypes from 'prop-types';
 
 import reducer from '../store/reducer';
 const composeEnhancers = typeof window === 'object' &&
@@ -14,8 +16,13 @@ const store = createStore(
     composeEnhancers(applyMiddleware(thunk))
 );
 
+MyApp.propTypes = {
+    Component: PropTypes.array.isRequired,
+    pageProps: PropTypes.array.isRequired,
+};
+
 export default function MyApp ({ Component, pageProps }) {
     return <Provider store={store}>
-            <Component {...pageProps} />
-        </Provider>
+        <Component {...pageProps} />
+    </Provider>;
 }

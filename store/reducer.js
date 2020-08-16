@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import * as actionTypes from './actionTypes';
 
 const initialState = {
@@ -18,11 +19,12 @@ const initialState = {
     },
     launchData: [],
     error: false,
-}
+};
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.STORE_LAUNCH_DATA:
+            // eslint-disable-next-line no-case-declarations
             const newData = [];
             if (action.payload) {
                 action.payload.map((data) => {
@@ -106,6 +108,6 @@ const reducer = (state = initialState, action) => {
             return state;
 
     }
-}
+};
 
 export default reducer;

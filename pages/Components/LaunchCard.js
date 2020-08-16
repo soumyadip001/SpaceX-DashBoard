@@ -1,3 +1,5 @@
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Card } from 'react-bootstrap';
 
 const LauchCard = (props) => {
@@ -38,13 +40,13 @@ const LauchCard = (props) => {
     }
 
     if (props.data && props.data.links && props.data.links.article_link) {
-        articleLink = <a href={props.data.links.article_link} target="_blank">More Info</a>;
+        articleLink = <a href={props.data.links.article_link} rel="noreferrer" target="_blank">More Info</a>;
     }
 
     if (props.data && props.data.launch_success) {
-        launchSuccess = <Card.Text>Successful launch: <span className='text-success'>SUCCESS</span></Card.Text>
+        launchSuccess = <Card.Text>Successful launch: <span className='text-success'>SUCCESS</span></Card.Text>;
     } else {
-        launchSuccess = <Card.Text>Successful launch: <span className='text-danger'>FAILURE</span></Card.Text>
+        launchSuccess = <Card.Text>Successful launch: <span className='text-danger'>FAILURE</span></Card.Text>;
     }
 
     return (
@@ -61,6 +63,10 @@ const LauchCard = (props) => {
             </Card.Body>
         </Card>
     );
+};
+
+LauchCard.propTypes = {
+    data: PropTypes.array.isRequired,
 };
 
 export default LauchCard;

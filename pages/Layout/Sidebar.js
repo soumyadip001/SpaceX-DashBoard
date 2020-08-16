@@ -1,3 +1,6 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+
 import { Col, Container, Row, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { initLaunches } from '../../store/actions';
@@ -41,8 +44,8 @@ const Sidebar = (props) => {
             return <Col xs={6} className="mb-1" key={year}>
                 <Button variant={variant} block
                     onClick={() => onSetFilterDate(year)}
-                    >{ year }</Button>
-            </Col>
+                >{ year }</Button>
+            </Col>;
         });
     }
 
@@ -67,12 +70,12 @@ const Sidebar = (props) => {
                 <Col xs={6} className="mb-1">
                     <Button variant={LS} block
                         onClick={() => refreshData(true, null)}
-                        >True</Button>
+                    >True</Button>
                 </Col>
                 <Col xs={6} className="mb-1">
                     <Button variant={LF} block
                         onClick={() => refreshData(false, null)}
-                        >False</Button>
+                    >False</Button>
                 </Col>
             </Row>
         </Container>;
@@ -99,12 +102,12 @@ const Sidebar = (props) => {
                 <Col xs={6} className="mb-1">
                     <Button variant={LS} block
                         onClick={() => refreshData(null, true)}
-                        >True</Button>
+                    >True</Button>
                 </Col>
                 <Col xs={6} className="mb-1">
                     <Button variant={LF} block
                         onClick={() => refreshData(null, false)}
-                        >False</Button>
+                    >False</Button>
                 </Col>
             </Row>
             <Row>
@@ -133,6 +136,14 @@ const Sidebar = (props) => {
     );
 };
 
+Sidebar.propTypes = {
+    filters: PropTypes.any,
+    selectedSuccessfulLand: PropTypes.bool.isRequired,
+    selectedSuccessfulLaunch: PropTypes.bool.isRequired,
+    selectedYear: PropTypes.any,
+    onInitLaunches: PropTypes.any,
+};
+
 const mapStateToProps = state => ({
     selectedYear: state.appliedFilter.year,
     selectedSuccessfulLaunch: state.appliedFilter.successfulLaunch,
@@ -143,6 +154,6 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => {
     return {
         onInitLaunches: (limit, year, launchSuccess, landSuccess) => dispatch(initLaunches(limit, year, launchSuccess, landSuccess))
-    }
-}
+    };
+};
 export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);

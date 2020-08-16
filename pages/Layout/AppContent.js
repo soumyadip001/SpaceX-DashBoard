@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { initLaunches } from '../../store/actions';
+import PropTypes from 'prop-types';
 
+import { initLaunches } from '../../store/actions';
 import LanchCard from '../Components/LaunchCard';
 
 class AppContent extends Component {
@@ -23,7 +24,7 @@ class AppContent extends Component {
                 return <Col key={launch.flight_number} xs={12} md={6} lg={3}>
                     <LanchCard data={launch} key={launch.flight_number} />
                 </Col>;
-            })
+            });
         } else {
             launchData = <Col><p>No Launch Data!</p></Col>;
         }
@@ -40,6 +41,11 @@ class AppContent extends Component {
     }
 }
 
+AppContent.propTypes = {
+    onInitLaunches: PropTypes.array.isRequired,
+    data: PropTypes.array.isRequired,
+};
+
 const mapStateToProps = state => ({
     data: state.launchData,
     error: state.error
@@ -48,6 +54,6 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => {
     return {
         onInitLaunches: (limit) => dispatch(initLaunches(limit))
-    }
-}
+    };
+};
 export default connect(mapStateToProps, mapDispatchToProps)(AppContent);

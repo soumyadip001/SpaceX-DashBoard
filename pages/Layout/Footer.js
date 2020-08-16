@@ -1,3 +1,5 @@
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Row, Col } from 'react-bootstrap';
 
 const Footer = (props) => {
@@ -10,6 +12,10 @@ const Footer = (props) => {
             </Row>
         </footer>
     );
+};
+
+Footer.propTypes = {
+    developer: PropTypes.array.isRequired,
 };
 
 export default Footer;
