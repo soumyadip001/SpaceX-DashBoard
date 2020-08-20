@@ -25,8 +25,8 @@ class Dashboard extends Component {
 }
 
 Dashboard.propTypes = {
-    sidebarFilters: PropTypes.array.isRequired,
-    developer: PropTypes.array.isRequired,
+    sidebarFilters: PropTypes.object.isRequired,
+    developer: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = state => ({

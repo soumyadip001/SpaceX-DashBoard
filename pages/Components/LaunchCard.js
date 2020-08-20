@@ -50,7 +50,7 @@ const LauchCard = (props) => {
     }
 
     return (
-        <Card className='mb-5' style={{ width: '15rem' }}>
+        <Card className='mb-5' style={{ width: '15rem', height: '550px', overflowY: 'auto', margin: '0px auto' }}>
             {cardimage}
             <Card.Body>
                 <Card.Title style={{color: '#0d47a1'}}>{missionName} #{flightNumber}</Card.Title>
@@ -66,7 +66,7 @@ const LauchCard = (props) => {
 };
 
 LauchCard.propTypes = {
-    data: PropTypes.array.isRequired,
+    data: PropTypes.any.isRequired,
 };
 
 export default LauchCard;

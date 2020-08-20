@@ -42,8 +42,8 @@ class AppContent extends Component {
 }
 
 AppContent.propTypes = {
-    onInitLaunches: PropTypes.array.isRequired,
-    data: PropTypes.array.isRequired,
+    onInitLaunches: PropTypes.func.isRequired,
+    data: PropTypes.any.isRequired,
 };
 
 const mapStateToProps = state => ({

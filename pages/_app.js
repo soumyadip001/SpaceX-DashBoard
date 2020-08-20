@@ -17,8 +17,8 @@ const store = createStore(
 );
 
 MyApp.propTypes = {
-    Component: PropTypes.array.isRequired,
-    pageProps: PropTypes.array.isRequired,
+    Component: PropTypes.object.isRequired,
+    pageProps: PropTypes.object.isRequired,
 };
 
 export default function MyApp ({ Component, pageProps }) {

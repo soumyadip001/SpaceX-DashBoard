@@ -12,27 +12,31 @@ const Sidebar = (props) => {
 
     function refreshData(lauch, land) {
         if (lauch !== null) {
+            const selectedLand = (props.selectedSuccessfulLand !== null) ? props.selectedSuccessfulLand : null;
             if (lauch) {
-                props.onInitLaunches(100, props.selectedYear, true, null);
+                props.onInitLaunches(100, props.selectedYear, true, selectedLand);
             } else {
-                props.onInitLaunches(100, props.selectedYear, false, null);
+                props.onInitLaunches(100, props.selectedYear, false, selectedLand);
             }
         }
         if (land !== null) {
+            const selectedLaunch = (props.selectedSuccessfulLaunch !== null) ? props.selectedSuccessfulLaunch : null;
             if (land) {
-                props.onInitLaunches(100, props.selectedYear, null, true);
+                props.onInitLaunches(100, props.selectedYear, selectedLaunch, true);
             } else {
-                props.onInitLaunches(100, props.selectedYear, null, false);
+                props.onInitLaunches(100, props.selectedYear, selectedLaunch, false);
             }
         }
     }
 
     function onSetFilterDate(year) {
+        let selectedYear = year;
+        const selectedLand = (props.selectedSuccessfulLand !== null) ? props.selectedSuccessfulLand : null;
+        const selectedLaunch = (props.selectedSuccessfulLaunch !== null) ? props.selectedSuccessfulLaunch : null;
         if (year === props.selectedYear) {
-            props.onInitLaunches(100, null, null, null);
-        } else {
-            props.onInitLaunches(100, year, null, null);
+            selectedYear = null;
         }
+        props.onInitLaunches(100, selectedYear, selectedLaunch, selectedLand);
     }
 
     if (props.filters) {
@@ -81,7 +85,7 @@ const Sidebar = (props) => {
         </Container>;
     }
 
-    if (props.filters && props.filters.successfulLaunch) {
+    if (props.filters && props.filters.successfulLanding) {
 
         let LS = 'secondary';
         let LF = 'secondary';
@@ -138,10 +142,10 @@ const Sidebar = (props) => {
 
 Sidebar.propTypes = {
     filters: PropTypes.any,
-    selectedSuccessfulLand: PropTypes.bool.isRequired,
-    selectedSuccessfulLaunch: PropTypes.bool.isRequired,
+    selectedSuccessfulLand: PropTypes.bool,
+    selectedSuccessfulLaunch: PropTypes.bool,
     selectedYear: PropTypes.any,
-    onInitLaunches: PropTypes.any,
+    onInitLaunches: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({

@@ -15,7 +15,7 @@ const Footer = (props) => {
 };
 
 Footer.propTypes = {
-    developer: PropTypes.array.isRequired,
+    developer: PropTypes.string.isRequired,
 };
 
 export default Footer;
