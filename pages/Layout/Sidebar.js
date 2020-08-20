@@ -141,7 +141,7 @@ const Sidebar = (props) => {
 };
 
 Sidebar.propTypes = {
-    filters: PropTypes.any,
+    filters: PropTypes.any.isRequired,
     selectedSuccessfulLand: PropTypes.bool,
     selectedSuccessfulLaunch: PropTypes.bool,
     selectedYear: PropTypes.any,
